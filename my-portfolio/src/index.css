@@ -1,0 +1,36 @@
+/* App.css */
+
+/* Add the background image to the main body or specific container */
+body {
+  background-image: url('../public/dark-blue-product-background.jpg'); /* URL of your background image */
+  background-size: cover; /* Cover the entire background */
+  background-position: center;
+  background-attachment: fixed; /* Keeps the image fixed while scrolling */
+  background-repeat: no-repeat;
+  color: #fff; /* White text color for better contrast */
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for cards */
+  color: #000; /* Black text inside cards */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Example styling */
+i {
+  font-size: 1.5em; /* Increase icon size */
+  color: #000; /* Icon color */
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00acee; /* Change color on hover */
+}
+
