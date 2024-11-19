@@ -1,36 +1,85 @@
-/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Add the background image to the main body or specific container */
-body {
-  background-image: url('../public/dark-blue-product-background.jpg'); /* URL of your background image */
-  background-size: cover; /* Cover the entire background */
-  background-position: center;
-  background-attachment: fixed; /* Keeps the image fixed while scrolling */
-  background-repeat: no-repeat;
-  color: #fff; /* White text color for better contrast */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.card {
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for cards */
-  color: #000; /* Black text inside cards */
-  border-radius: 15px; /* Rounded corners */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Example styling */
-i {
-  font-size: 1.5em; /* Increase icon size */
-  color: #000; /* Icon color */
+:root {
+  --bg-color: #f7fafc;
+  --text-color: #1a202c;
+  --accent-color: #000;
+  --card-bg: #ffffff;
+  --navbar-color: #ffffff; /* Default navbar color for light mode */
+}
+
+body.dark-mode {
+  --bg-color: #1a202c;
+  --text-color: #f7fafc;
+  --accent-color: #fff;
+  --card-bg: #2d3748;
+  --navbar-color: #1a202c;
+}
+
+/* General Styles */
+header {
+  background-color: var(--navbar-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 a {
-  color: #000;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
 a:hover {
-  color: #00acee; /* Change color on hover */
+  text-decoration: underline;
 }
 
+/* Footer Styles */
+footer {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+footer a {
+  color: var(--accent-color);
+}
+
+footer a:hover {
+  color: var(--accent-color);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+}

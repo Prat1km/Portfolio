@@ -1,141 +1,187 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Navbar, Nav, ProgressBar, Image } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(true);  // Set default to true for dark mode
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', isDarkMode);
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#home">Home</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#about">About</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#skills">Skills</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="#projects">Projects</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="#experience">Experience</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="#contact">Contact</a>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+    <div className={`App ${isDarkMode ? 'dark-mode' : ''}`}>
+      {/* Navigation */}
+      <Navbar bg={isDarkMode ? 'dark' : 'light'} variant={isDarkMode ? 'dark' : 'light'} expand="lg" sticky="top">
+        <Container>
+          <Navbar.Brand href="#home">Pratik Mishra</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+            <Nav>
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#about">About</Nav.Link>
+              <Nav.Link href="#skills">Skills</Nav.Link>
+              <Nav.Link href="#projects">Projects</Nav.Link>
+              <Nav.Link href="#experience">Experience</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+              <Nav.Link href="/resume.pdf" download="Pratik Mishra.pdf">Resume</Nav.Link>
 
-      {/* Scrollspy sections */}
-      <div data-bs-spy="scroll" data-bs-target="#navbarSupportedContent" data-bs-offset="50" tabIndex="0" className="scrollspy-content">
-        
-        {/* Home Section */}
-        <section id="home" className="d-flex justify-content-center align-items-center" style={{ padding: '100px 0', height: '100vh', textAlign: 'center' }}>
-          <div className="card p-5 shadow" style={{ width: '50%', backgroundColor: '#f8f9fa' }}>
-            <h1>Pratik Mishra</h1>
-            <p>Software Developer | Java, Spring Boot, Angular</p>
-            <div className="row">
-            <div className="col-lg-2"></div>
-            <div className="col-lg-4">
-            <a href="#about" className="btn btn-outline-dark">Download Resume</a>
+            </Nav>
+            <div className="theme-switch-wrapper">
+              <label className="theme-switch" htmlFor="checkbox">
+                <input type="checkbox" id="checkbox" checked={isDarkMode} onChange={toggleDarkMode} />
+                <div className="slider round"></div>
+              </label>
             </div>
-            <div className="col-lg-3">
-            <a href="#about" className="btn btn-outline-dark">Learn More</a>
-            </div>
-            </div>
-          </div>
-        </section>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-        {/* About Section */}
-        <section id="about" className="d-flex justify-content-center align-items-center" style={{ padding: '100px 0', height: '100vh' }}>
-          <div className="card p-5 shadow" style={{ width: '50%', backgroundColor: '#f8f9fa' }}>
-            <h2>About Me</h2>
-            <p>
-              I am a developer with over 2 years of professional work experience in developing and deploying end-to-end,
-              production-ready scalable microservices. I have proficiency in both frontend & backend 
-              technologies, databases, as well as brief hands-on experience with Linux servers. 
-            </p>
-          </div>
-        </section>
+      {/* Home Section */}
+      <section id="home" className="py-5">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={8}>
+              <h1>Hi, I'm Pratik 👋 </h1>
+              <p className="lead">
+                I'm a Developer specializing in Full Stack Development.
+                With a passion for Java and JavaScript, I create scalable end to end applications that help facilitate business growth.
+              </p>
+            </Col>
+            <Col md={4} className="text-center">
+              <div className="profile-image-container">
+                <Image src="/pfp.jpg" fluid className="profile-image" />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-        {/* Skills Section */}
-        <section id="skills" className="d-flex justify-content-center align-items-center" style={{ padding: '100px 0', height: '100vh' }}>
-          <div className="card p-5 shadow" style={{ width: '50%', backgroundColor: '#f8f9fa' }}>
-            <h2>Skills</h2>
-            <ul>
-              <li>Languages: Java, JavaScript, Typescript, HTML5, CSS, SQL</li>
-              <li>Frameworks & Libraries: SpringBoot, Angular, React.js, Node.js</li>
-              <li>Technologies: RESTful APIs, Microservices, Git, JMeter</li>
-              <li>Databases: MySQL, PostgreSQL, Oracle DB</li>
-              <li>Cloud & DevOps: AWS, Linux servers, Shell scripting</li>
-            </ul>
-          </div>
-        </section>
+      {/* About Section */}
+      <section id="about" className="zigzag-section left-align py-5 bg-light">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h2>About Me</h2>
+            </Col>
+            <Col md={6}>
+              <p>I am a dedicated and enthusiastic developer with a strong foundation in computer science and a passion for creating innovative solutions.</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="d-flex justify-content-center align-items-center" style={{ padding: '100px 0', height: '100vh' }}>
-          <div className="card p-5 shadow" style={{ width: '50%', backgroundColor: '#f8f9fa' }}>
-            <h2>Projects Section</h2>
-            <p>Details of my projects.</p>
-          </div>
-        </section>
+      {/* Skills Section */}
+      <section id="skills" className="zigzag-section right-align py-5">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h2>Skills</h2>
+            </Col>
+            <Col md={6}>
+              <Skills />
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-        {/* Experience Section */}
-        <section id="experience" className="d-flex justify-content-center align-items-center" style={{ padding: '100px 0', height: '100vh' }}>
-          <div className="card p-5 shadow" style={{ width: '50%', backgroundColor: '#f8f9fa' }}>
-            <h2>Experience</h2>
-            <div>
-              <h3>Associate Systems Analyst | NSEIT</h3>
-              <p>June 2023 – Present</p>
-              <ul>
-                <li>Developed microservices for CCIL and Clearcorp, improving system performance by 50%.</li>
-                <li>Created Spring Boot APIs and responsive data visualizations using Chart.js.</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Associate Systems Analyst - Trainee | NSEIT</h3>
-              <p>Nov 2022 – May 2023</p>
-              <ul>
-                <li>Led the migration of NSE IFSC websites, ensuring data integrity and minimal downtime.</li>
-                <li>Streamlined web content management using Node.js, React.js, and Drupal.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
+      {/* Projects Section */}
+      <section id="projects" className="zigzag-section left-align py-5 bg-light">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h2>Projects</h2>
+            </Col>
+            <Col md={6}>
+              <p>Details about my projects...</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-        {/* Contact Section */}
-        <section id="contact" className="d-flex justify-content-center align-items-center" style={{ padding: '100px 0', height: '100vh', textAlign: 'center' }}>
-          <div className="card p-5 shadow" style={{ width: '50%', backgroundColor: '#f8f9fa' }}>
-            <h2>Contact Me</h2>
-            <p>Email: pratikmishra2807@gmail.com</p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/pratik-mishraa/">Pratik Mishra</a></p>
-          </div>
-        </section>
+      {/* Experience Section */}
+      <section id="experience" className="zigzag-section right-align py-5">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h2>Experience</h2>
+            </Col>
+            <Col md={6}>
+              <p>Work experience details...</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
-      </div>
+      {/* Contact Section */}
+      <section id="contact" className="zigzag-section left-align py-5 bg-light">
+        <Container>
+          <Row className="align-items-center">
+            <Col md={6}>
+              <h2>Contact Me</h2>
+            </Col>
+            <Col md={6}>
+              <p>Contact details...</p>
+            </Col>
+          </Row>
+        </Container>
+      </section>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#000', color: '#fff', padding: '20px 0', textAlign: 'center', marginTop: 'auto' }}>
-        <div className="container">
+      <footer className="py-4">
+        <Container>
           <p>&copy; 2024 Pratik Mishra. All Rights Reserved.</p>
-          <div className="d-flex justify-content-center">
-            <a href="mailto:pratikmishra2807@gmail.com" style={{ color: '#fff', marginRight: '15px' }}>Email</a>
-            <a href="https://www.linkedin.com/in/pratik-mishraa/" style={{ color: '#fff', marginRight: '15px' }}>LinkedIn</a>
-          </div>
-        </div>
+        </Container>
       </footer>
-    </>
+    </div>
+  );
+}
+
+function SkillBar({ skill, proficiency }) {
+  return (
+    <div className="skill-bar mb-3">
+      <div className="d-flex justify-content-between mb-1">
+        <span>{skill}</span>
+        <span>{proficiency}%</span>
+      </div>
+      <ProgressBar now={proficiency} variant="info" />
+    </div>
+  );
+}
+
+function Skills() {
+  const skills = [
+    { name: "JavaScript", proficiency: 90 },
+    { name: "React", proficiency: 85 },
+    { name: "Node.js", proficiency: 80 },
+    { name: "Python", proficiency: 75 },
+    { name: "SQL", proficiency: 70 },
+    // Add more skills as needed
+  ];
+
+  return (
+    <section id="skills">
+      <Container>
+        <h2 className="text-center mb-5">Skills</h2>
+        <Row>
+          <Col md={6}>
+            {skills.slice(0, Math.ceil(skills.length / 2)).map((skill, index) => (
+              <SkillBar key={index} skill={skill.name} proficiency={skill.proficiency} />
+            ))}
+          </Col>
+          <Col md={6}>
+            {skills.slice(Math.ceil(skills.length / 2)).map((skill, index) => (
+              <SkillBar key={index} skill={skill.name} proficiency={skill.proficiency} />
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </section>
   );
 }
 

@@ -13,19 +13,122 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dark-mode {
+  background-color: #1a202c;
+  color: #f7fafc;
 }
 
-.App-link {
-  color: #61dafb;
+.dark-mode .navbar {
+  background-color: #1a202c !important;
+}
+
+.dark-mode .bg-light {
+  background-color: #1a202c !important;
+}
+
+.dark-mode .card {
+  background-color: #2d3748;
+  color: #f7fafc;
+}
+
+.dark-mode a {
+  color: #fff;
+}
+
+.dark-mode a:hover {
+  color: #fff;
+}
+
+/* Profile image styles */
+.profile-image-container {
+  width: 200px;
+  height: 250px; /* Adjusted for passport size ratio (4:5) */
+  margin: 0 auto;
+  overflow: hidden;
+  box-shadow: 
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 10px; /* Slightly rounded corners */
+  transform: perspective(1000px) rotateY(5deg);
+  transition: transform 0.3s ease;
+}
+
+.profile-image-container:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #cccccc81;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Dark mode styles */
+.dark-mode .slider {
+  background-color: #fff;
+}
+
+.dark-mode .slider:before {
+  background-color: #fff;
 }
 
 @keyframes App-logo-spin {
