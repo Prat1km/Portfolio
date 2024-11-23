@@ -1,10 +1,10 @@
 ## Site Name
-- Portable Portfolio
+- Pratik Mishra
 
 ## Header
 - Hi, my name is Pratik. 
-- I'm a software engineer.
-- I'm a Developer specializing in Full Stack Development. With a passion for Java and JavaScript, I create scalable end to end applications that help facilitate business growth.
+- I'm a Developer.
+- Currently pursuing MS in Software Engineering from Cleveland State University, Ohio. 
 
 
 
@@ -12,7 +12,7 @@
 I am a dedicated and enthusiastic developer with a strong foundation in computer science and a passion for creating innovative solutions.
 
 ## Contact
-Write your "Contact" section here.
+
 - LinkedIn: https://linkedin.com/in/pratik-mishraa/
 - GitHub: https://github.com/Prat1km
 - Email: pratikmishra2807@gmail.com
