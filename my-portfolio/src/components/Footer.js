@@ -1,11 +1,25 @@
-import React from 'react';
+import {
+  Box,
+  Container,
+  Stack,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
-function Footer() {
+export default function Footer() {
   return (
-    <footer>
-      <p>&copy; 2024 Pratik Mishra. All rights reserved.</p>
-    </footer>
+    <Box
+      bg={useColorModeValue("gray.50", "gray.900")}
+      color={useColorModeValue("gray.700", "gray.200")}
+    >
+      <Container
+        as={Stack}
+        maxW={"6xl"}
+        py={4}
+        align="center"
+      >
+        <Text>© 2024 Pratik Mishra. All rights reserved</Text>
+      </Container>
+    </Box>
   );
 }
-
-export default Footer;

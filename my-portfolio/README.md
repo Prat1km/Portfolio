@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+![hero](example/hero.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Portfolio using React.js and Chakra UI
 
-## Available Scripts
+This portfolio is built using React.js and Chakra UI. It allows you to quickly create and customize your portfolio website using markdown files.
 
-In the project directory, you can run:
+|    ![experience](example/Experience.gif)    | ![projects](example/Projects.gif) |
+| :-----------------------------------------: | :-------------------------------: |
+|       Document your work experiences        |    Showcase your best projects    |
+| ![otherprojects](example/OtherProjects.gif) |   ![mobile](example/Mobile.gif)   |
+|        Include your smaller projects        |     Mobile-responsive design      |
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To get started with development, you can use the following commands:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+# Install dependencies
+yarn install
 
-### `npm test`
+# Start the development server
+yarn start
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Build the static files
+yarn build
+```
 
-### `npm run build`
+After running `yarn start`, your website should be available at `http://localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Site Name
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To edit the site name, go to `public/index.html` and change the `<title>`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+<title>Site Name</title>
+```
 
-### `npm run eject`
+## Editing Content
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To edit the content on your website, refer to the markdown files located in the `public/content` folder.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Profile.md
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+## Header
+- Hi, my name is ______.
+- I'm a ______.
+- Short Description Here.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## About
+Write your "About" section here.
 
-## Learn More
+## Contact
+Write your "Contact" section here.
+- LinkedIn: https://linkedin.com/in/username
+- GitHub: https://github.com/username
+- Email: username@gmail.com
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Logo
+- EB
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### ExperienceTags.md and ProjectsTags.md
 
-### Code Splitting
+```
+Category 1
+Category 2
+Category 3
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Experience.md
 
-### Analyzing the Bundle Size
+To edit your work experience, update the `Experience.md` file with the following format:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+## Company Name
+- *Role* | Period
+- ![image_name](../assets/image_name.png)
+- Tags: Work
+- Badges:
+  - BadgeContent [badge_colour]
+- List Items:
+  - Point 1
+  - Point 2
+```
 
-### Making a Progressive Web App
+### Projects.md
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To edit your projects, update the `Projects.md` file with the following format:
 
-### Advanced Configuration
+```
+## Project Name
+Description
+- ![image_name](../assets/image_name.png)
+- Tags: WebDev
+- Badges:
+  - BadgeContent [badge_colour]
+- Buttons:
+  - ButtonContent [button_link]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### OtherProjects.md
 
-### Deployment
+To edit other projects or items, update the `OtherProjects.md` file with the following format:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+## Project Name
+Description
+- Tags: WebDev
+- Badges:
+  - BadgeContent [badge_colour]
+- Buttons:
+  - ButtonContent [button_link]
+```
 
-### `npm run build` fails to minify
+## Colour Theme
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can choose from 10 different colours provided by Chakra UI. Modify the `color` variable in the `App.js` file located in the `src` folder.
+
+```
+// Available Colours:
+// blue, cyan, gray, green, orange, pink, purple, red, teal, yellow
+
+const color = "pink";
+```
+
+## Customizing Design
+
+You can customize the design of your website by modifying the `theme.js` file located in the `src` folder. Refer to the Chakra UI documentation for more information on how to customize your theme.
+
+## Usage
+
+You may use this template for your own portfolio as long as you give me proper credit by linking back to my profile.
+
+For more details on hosting this site, you may refer to [A Step-by-Step Guide: Deploying on Netlify](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/)
