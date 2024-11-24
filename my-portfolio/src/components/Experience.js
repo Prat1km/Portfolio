@@ -15,115 +15,99 @@ import {
   List,
   ListItem,
   ListIcon,
-  Button,
-  ButtonGroup,
-  Center,
 } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Fade } from "react-reveal";
 import { useState, useEffect } from "react";
 import ExperienceArray from "./ExperienceArray";
-import TagsArray from "./TagsArray";
 
 export default function Experience({ color }) {
   const experience = ExperienceArray();
-  const options = TagsArray("ExperienceTags");
-  const [selected, setSelected] = useState("");
+  const [selectedExperience, setSelectedExperience] = useState(null);
 
   useEffect(() => {
-    if (options.length > 0) {
-      setSelected(options[0].value);
+    // Set the first experience as the default when the data is available
+    if (experience.length > 0) {
+      setSelectedExperience(experience[0]);
     }
-  }, [options]);
-  
-  const handleSelected = (value) => {
-    setSelected(value);
-  };
+  }, [experience]);
 
   return (
-    <>
-      <Container maxW={"3xl"} id="experience">
-        <Stack
-          as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          pb={{ base: 20, md: 36 }}
-        >
-          <Stack align="center" direction="row" px={4}>
-            <HStack mx={4}>
-              <Text color={`${color}.400`} fontWeight={800}>
-                02
-              </Text>
-              <Text fontWeight={800}>Experience</Text>
-            </HStack>
-            <Divider orientation="horizontal" />
-          </Stack>
-          <Center px={4}>
-            <ButtonGroup variant="outline">
-              {options.map((option) => (
-                <Button
-                  colorScheme={selected === option.value ? `${color}` : "gray"}
-                  onClick={() => handleSelected(option.value)}
-                >
-                  {option.value}
-                </Button>
-              ))}
-            </ButtonGroup>
-          </Center>
+    <Container maxW={"3xl"} id="experience">
+      <Stack
+        as={Box}
+        textAlign={"center"}
+        spacing={{ base: 8, md: 14 }}
+        pb={{ base: 20, md: 36 }}
+      >
+        {/* Section Header */}
+        <Stack align="center" direction="row" px={4} spacing={4}>
+  <Divider orientation="horizontal" flex="1" />
+  <Text fontWeight={800} textAlign="center" whiteSpace="nowrap">
+    Work Experience
+  </Text>
+  <Divider orientation="horizontal" flex="1" />
+</Stack>
+
+
+        {/* Experience Display */}
+        {selectedExperience && (
           <Stack px={4} spacing={4}>
-            {experience
-              .filter((exp) => exp.tags.includes(selected))
-              .map((exp) => (
-                <Fade bottom>
-                  <Card key={exp.company} size="sm">
-                    <CardHeader>
-                      <Flex justifyContent="space-between">
-                        <HStack>
-                          <Image src={exp.image} h={50} />
-                          <Box px={2} align="left">
-                            <Text fontWeight={600}>{exp.company}</Text>
-                            <Text>{exp.position}</Text>
-                          </Box>
-                        </HStack>
-                        <Text px={2} fontWeight={300}>
-                          {exp.duration}
+            <Fade bottom>
+              <Card key={selectedExperience.company} size="sm">
+                <CardHeader>
+                  <Flex justifyContent="space-between">
+                    <HStack>
+                      <Image
+                        src={selectedExperience.image}
+                        h={50}
+                        alt={`${selectedExperience.company} logo`}
+                      />
+                      <Box px={2} align="left">
+                        <Text fontWeight={600}>
+                          {selectedExperience.company}
                         </Text>
-                      </Flex>
-                    </CardHeader>
-                    <CardBody>
-                      <Flex>
-                        <List align="left" spacing={3}>
-                          {exp.listItems.map((item, index) => (
-                            <ListItem key={index}>
-                              <ListIcon
-                                boxSize={6}
-                                as={ChevronRightIcon}
-                                color={`${color}.500`}
-                              />
-                              {item}
-                            </ListItem>
-                          ))}
-                        </List>
-                      </Flex>
-                    </CardBody>
-                    <CardFooter>
-                      <HStack spacing={2}>
-                        {exp.badges.map((badge) => (
-                          <Badge
-                            key={badge.name}
-                            colorScheme={badge.colorScheme}
-                          >
-                            {badge.name}
-                          </Badge>
-                        ))}
-                      </HStack>
-                    </CardFooter>
-                  </Card>
-                </Fade>
-              ))}
+                        <Text>{selectedExperience.position}</Text>
+                      </Box>
+                    </HStack>
+                    <Text px={2} fontWeight={300}>
+                      {selectedExperience.duration}
+                    </Text>
+                  </Flex>
+                </CardHeader>
+                <CardBody>
+                  <Flex>
+                    <List align="left" spacing={3}>
+                      {selectedExperience.listItems.map((item, index) => (
+                        <ListItem key={index}>
+                          <ListIcon
+                            boxSize={6}
+                            as={ChevronRightIcon}
+                            color={`${color}.500`}
+                          />
+                          {item}
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Flex>
+                </CardBody>
+                <CardFooter>
+                  <HStack spacing={2}>
+                    {selectedExperience.badges.map((badge) => (
+                      <Badge
+                        key={badge.name}
+                        colorScheme={badge.colorScheme}
+                      >
+                        {badge.name}
+                      </Badge>
+                    ))}
+                  </HStack>
+                </CardFooter>
+              </Card>
+            </Fade>
           </Stack>
-        </Stack>
-      </Container>
-    </>
+        )}
+      </Stack>
+    </Container>
   );
 }

@@ -85,7 +85,7 @@ export default function Header({ color }) {
               Contact Me
             </Button>
             <Box>
-              <Icon
+              {/* <Icon
                 as={Arrow}
                 color={useColorModeValue("gray.800", "gray.300")}
                 w={71}
@@ -102,7 +102,7 @@ export default function Header({ color }) {
                 transform={"rotate(10deg)"}
               >
                 Click me!
-              </Text>
+              </Text> */}
             </Box>
           </Stack>
         </Stack>

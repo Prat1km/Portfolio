@@ -31,15 +31,14 @@ export default function Contact({ color }) {
           spacing={{ base: 8, md: 14 }}
           pb={{ base: 20, md: 36 }}
         >
-          <Stack align="center" direction="row" p={4}>
-            <HStack mx={4}>
-              <Text color={`${color}.400`} fontWeight={800}>
-                04
-              </Text>
-              <Text fontWeight={800}>Contact</Text>
-            </HStack>
-            <Divider orientation="horizontal" />
-          </Stack>
+         <Stack align="center" direction="row" px={4} spacing={4}>
+  <Divider orientation="horizontal" flex="1" />
+  <Text fontWeight={800} textAlign="center" whiteSpace="nowrap">
+    Contact
+  </Text>
+  <Divider orientation="horizontal" flex="1" />
+</Stack>
+
           <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
             <Heading fontSize={"3xl"}>Let's stay in touch!</Heading>
             <Text color={"gray.600"} fontSize={"xl"} px={4}>
